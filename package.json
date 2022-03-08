@@ -1,0 +1,31 @@
+{
+  "name": "dsds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e ts --watch src .env --exec \"tsc --incremental && node build/index.js\"",
+    "build": "tsc",
+    "start": "node build/index.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build/*",
+      "public/*"
+    ],
+    "delay": "2500"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^14.18.12"
+  }
+}
