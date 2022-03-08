@@ -3,7 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import { origin } from './config/configs';
 
-const port = process.env.PORT;
+const port = process.env.PORT || 80;
 const app = express();
 
 app.use(
@@ -23,6 +23,6 @@ app.get('/api/:id', (req, res) => {
 
   res.json({ ans: isEvenOdd, num: param });
 });
-app.listen(80, () => {
+app.listen(port, () => {
   console.log(`Server running at port ${port}. Supporting ${origin}`);
 });
