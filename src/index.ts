@@ -3,7 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import { origin } from './config/configs';
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT;
 const app = express();
 
 app.use(
