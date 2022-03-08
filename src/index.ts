@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import { origin } from './config/configs';
 
-const port = 80 || process.env.PORT;
+const port = process.env.PORT || 80;
 const app = express();
 
 app.use(
