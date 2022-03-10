@@ -1,7 +1,7 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
-import { domain, origin } from './config/configs';
+import { origin } from './config/configs';
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -23,7 +23,8 @@ app.post('/api/:id', (req, res) => {
   res.cookie('hello', param, {
     maxAge: 600 * 600 * 600,
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'none',
+    secure: true,
   });
   res.json({ ans: isEvenOdd, num: param });
 });
