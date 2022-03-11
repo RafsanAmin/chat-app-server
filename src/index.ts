@@ -23,8 +23,6 @@ app.post('/api/:id', (req, res) => {
   res.cookie('hello', param, {
     maxAge: 600 * 600 * 600,
     httpOnly: true,
-    sameSite: 'none',
-    secure: true,
   });
   res.json({ ans: isEvenOdd, num: param });
 });
