@@ -1,20 +1,17 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
-import { origin } from './config/configs';
+import { Domain, Origin } from './config/configs';
+import checkOrigin from './middlewares/originCheck';
 
 const port = process.env.PORT || 80;
 const app = express();
 
-app.use((req, res, next) => {
-  const url = req.ip;
-  console.log(url);
-  next();
-});
+app.use(checkOrigin);
 
 app.use(
   cors({
-    origin,
+    origin: Origin,
     credentials: true,
   })
 );
@@ -31,9 +28,10 @@ app.post('/api/:id', (req, res) => {
     httpOnly: true,
     sameSite: 'none',
     secure: true,
+    domain: Domain,
   });
   res.json({ ans: isEvenOdd, num: param });
 });
 app.listen(port, () => {
-  console.log(`Server running at port ${port}. Supporting ${origin}`);
+  console.log(`Server running at port ${port}. Supporting ${Origin}`);
 });
