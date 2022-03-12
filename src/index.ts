@@ -1,7 +1,7 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
-import { Domain, Origin } from './config/configs';
+import { Origin } from './config/configs';
 import checkOrigin from './middlewares/originCheck';
 
 const port = process.env.PORT || 80;
@@ -24,11 +24,10 @@ app.post('/api/:id', (req, res) => {
   const param = req.params.id;
   const isEvenOdd = Number(param) % 2 === 0 ? 'Even' : 'Odd';
   res.cookie('hi', param, {
-    maxAge: 600 * 600,
+    maxAge: 600 * 6000,
     httpOnly: true,
     sameSite: 'none',
     secure: true,
-    domain: Domain,
   });
   res.json({ ans: isEvenOdd, num: param });
 });
