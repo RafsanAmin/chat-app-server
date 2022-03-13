@@ -4,6 +4,7 @@ import 'dotenv/config';
 import express from 'express';
 import { Origin } from './config/configs';
 import Authen from './middlewares/authen';
+import checkOrigin from './middlewares/originCheck';
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -17,7 +18,7 @@ app.use(
 );
 app.use(cookieParser());
 
-// app.use(checkOrigin);
+app.use(checkOrigin);
 app.use(Authen);
 
 app.get('/', (req, res) => {
