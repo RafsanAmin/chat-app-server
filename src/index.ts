@@ -25,7 +25,6 @@ app.post('/api/:id', (req, res) => {
   const isEvenOdd = Number(param) % 2 === 0 ? 'Even' : 'Odd';
   res.cookie('hi', param, {
     maxAge: 600 * 6000,
-    httpOnly: true,
     sameSite: 'none',
     secure: true,
   });
